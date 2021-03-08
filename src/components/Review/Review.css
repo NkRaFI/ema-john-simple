@@ -1,0 +1,9 @@
+.review-page{
+    display: flex;
+}
+.review-page-products{
+    width: 70%;
+    margin-right: 10px;
+    margin-left: 40px;
+    border-right: 2px solid lightgray;
+}

@@ -1,0 +1,14 @@
+.review-item{
+    display: flex;
+    margin: 15px 10px 10px 100px;
+    border-bottom: 2px solid lightgray;
+    padding: 10px;
+}
+.review-item img{
+    margin-right: 20px;
+}
+.review-item-name{
+    color: blue;
+    font-weight: 400;
+    font-size: 20px;
+}

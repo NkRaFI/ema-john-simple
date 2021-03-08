@@ -4,7 +4,7 @@ import './Cart.css';
 const Cart = (props) => {
     const cart = props.cart
     //total price using reduce method
-    const total = cart.reduce((total, pd) =>total+pd.price, 0);
+    const total = cart.reduce((total, pd) =>total+pd.price*pd.quantity, 0);
     //shipping cost depending on total price
     let shippingCost = 0;
     if(total > 35){
@@ -30,7 +30,7 @@ const Cart = (props) => {
             <p>Shipping Cost: {fixedAndCoverToNum(shippingCost)}</p>
             <p>Vat + Tax: {fixedAndCoverToNum(vat)}</p>
             <p>Total Price: {(total + shippingCost + vat).toFixed(2)}</p>
-            <button className="cart-btn">Review Your Order</button>
+            {props.children}
         </div>
     );
 };
