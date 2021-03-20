@@ -1,0 +1,24 @@
+.shipment{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.shipment form input{
+    display: block;
+    padding: 5px 10px;
+    margin: 15px 0px;
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+}
+.shipment form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 10px;
+}
+.error{
+    color: red;
+}
