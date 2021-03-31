@@ -1,16 +1,16 @@
 import React from 'react';
-import fakeData from '../../fakeData';
 
 const Inventory = () => {
     document.title = 'Ema John | Inventory';
 
     const handleAddProduct = () => {
+        const product = {}
         fetch('http://localhost:5000/addProduct', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(fakeData)
+            body: JSON.stringify(product)
         })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -18,6 +18,12 @@ const Inventory = () => {
 
     return (
         <div>
+            <form action="">
+                <p><span>Product Name</span><input type="text"/></p>
+                <p><span>Product Price</span><input type="text"/></p>
+                <p><span>Product Quantity</span><input type="text"/></p>
+                <p><span>Product Image</span><input type="file"/></p>
+            </form>
             <button onClick={handleAddProduct}>Add Product</button>
         </div>
     );
