@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
@@ -8,6 +7,7 @@ import happyImg from '../../images/giphy.gif';
 import { useHistory } from 'react-router';
 
 const Review = () => {
+    document.title = 'Ema John | Review';
     const [cart, setCart] = useState([]);
 
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -23,12 +23,16 @@ const Review = () => {
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart)
-        const cartProduct = productKeys.map(key => {
-            const product = fakeData.find(pd => pd.key === key);
-            product.quantity = savedCart[key];
-            return product
+        
+        fetch('http://localhost:5000/productsByKeys', {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
         })
-        setCart(cartProduct);
+        .then(res => res.json())
+        .then(data => setCart(data))
     },[])
     // const cartItems = cart.reduce( (sum, pd) => sum + pd.quantity, 0);
     const removeProduct = (productKey) =>{
@@ -40,6 +44,9 @@ const Review = () => {
     return (
         <div className="review-page">
             <div className="review-page-products">
+                {
+                    cart.length === 0 && <p>Loading...</p>
+                }
                 {
                     cart.map( pd => <ReviewItem product={pd} key={pd.key} removeProduct={removeProduct}></ReviewItem>)
                 }

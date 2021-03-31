@@ -14,6 +14,7 @@ if (!firebase.apps.length) {
 }
 
 function Login() {
+  document.title = 'Ema John | Login';
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignedIn: false,
