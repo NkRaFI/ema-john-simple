@@ -10,7 +10,7 @@ const Shipment = () => {
     const onSubmit = data => {
         const savedCart = getDatabaseCart();
         const orderInfo = {...loggedInUser, products: savedCart, shipment: data, orderTime: new Date()}
-        fetch('http://localhost:5000/addOrder', {
+        fetch('https://pumpkin-tart-01673.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
